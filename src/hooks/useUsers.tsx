@@ -34,16 +34,27 @@ export const useUsers = () => {
 
         if (res.data.data.length > 0) {
             setUsers(res.data.data);
-            paginaRef.current++;
         } else {
-            alert('Not found more data');
+            paginaRef.current--;
         }
     }
 
+    const nextPage = () => {
+        paginaRef.current++;
+        loadUsers();
+    }
+
+    const previousPage = () => {
+        if (paginaRef.current > 1) {
+            paginaRef.current--;
+            loadUsers();
+        }
+    }
 
     return {
         users,
-        loadUsers,
         renderUser,
+        nextPage,
+        previousPage,
     }
 }

@@ -2,7 +2,7 @@ import { useUsers } from '../hooks/useUsers';
 
 export const Usuarios = () => {
 
-    const { users, renderUser, loadUsers } = useUsers();
+    const { users, renderUser, nextPage, previousPage } = useUsers();
 
     return (
         <>
@@ -20,7 +20,9 @@ export const Usuarios = () => {
                 </tbody>
             </table>
 
-            <button className="btn btn-primary" onClick={loadUsers}>Siguiente</button>
+            <button className="btn btn-primary" onClick={previousPage}>Anterior</button>
+            &nbsp;
+            <button className="btn btn-primary" onClick={nextPage}>Siguiente</button>
         </>
     )
 }
